@@ -339,6 +339,8 @@ int main(int argc, const char *argv[]) {
 			cmd_grow(volume, argc - 2, argv + 2);
 		} else if(strcmp(argv[2], "getattr") == 0) {
 			cmd_getattr(volume, argc - 2, argv + 2);
+		} else if(strcmp(argv[2], "untar") == 0) {
+			cmd_untar(volume, argc - 2, argv + 2);
 		} else if(strcmp(argv[2], "debug") == 0) {
 			if(argc > 3 && strcmp(argv[3], "verbose") == 0) {
 				debugBTree(volume->catalogTree, TRUE);
