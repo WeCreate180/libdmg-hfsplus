@@ -256,6 +256,28 @@ void cmd_getattr(Volume* volume, int argc, const char *argv[]) {
 	free(record);
 }
 
+
+void cmd_untar(Volume* volume, int argc, const char *argv[]) {
+	AbstractFile *inFile;
+	
+	if(argc < 2) {
+		printf("Not enough arguments");
+		return;
+	}
+	
+	inFile = createAbstractFileFromFile(fopen(argv[1], "rb"));
+	
+	if(inFile == NULL) {
+		printf("file to untar not found");
+	}
+
+	hfs_untar(volume, inFile);
+
+    inFile->close(inFile);
+}
+
+
+
 void TestByteOrder()
 {
 	short int word = 0x0001;
